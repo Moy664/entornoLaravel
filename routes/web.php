@@ -30,15 +30,15 @@ Route::get('/posts/{post}/{categoria}/{type?}', function ($post, $categoria, $ty
 Route::get('prueba',function(){
     #crear un nuevo post
     // $post = new Post; //crea un nuevo objeto de la clase Post
-    // $post->title = 'Titulo de prueba 1'; //accede al campo title y le asigna un valor
+    // $post->title = 'Titulo de prueBA 1'; //accede al campo title y le asigna un valor
     // $post->content = 'Contenido de prueba 1'; //accede al campo content y le asigna un valor
     // $post->categoria  = 'Categoria de prueba 1'; //accede al campo categoria y le asigna un valor
     // $post ->save(); //guarda el objeto en la base de datos
     // return $post;
 
     #buscar un post por el ID
-    // $post = Post::find(1); //busca un registro en la tabla posts con el id 1 y lo devuelve como un objeto de la clase Post
-    // return $post;
+    $post = Post::find(1); //busca un registro en la tabla posts con el id 1 y lo devuelve como un objeto de la clase Post
+    return $post;
 
     #buscar un post por el title
     // $post = Post::where('title', 'Titulo de prueba 1')
