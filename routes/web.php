@@ -38,7 +38,10 @@ Route::get('prueba',function(){
 
     #buscar un post por el ID
     $post = Post::find(1); //busca un registro en la tabla posts con el id 1 y lo devuelve como un objeto de la clase Post
-    return $post;
+    return dd($post->is_active);
+    return $post->is_active;
+    return $post->published_at->format('d-m-Y'); //accede al campo created_at y lo formatea a d-m-Y
+    return $post->created_at->diffForHumans(); //accede al campo created_at y lo formatea a d-m-Y
 
     #buscar un post por el title
     // $post = Post::where('title', 'Titulo de prueba 1')

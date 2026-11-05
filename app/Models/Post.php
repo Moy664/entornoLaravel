@@ -16,6 +16,16 @@ class Post extends Model
     #eloquent buscara la tabla en plural y en minuscula, es decir, posts
     //
 
+    //cada vez que elocuent recupera un registro de la base de datos, este lo convierte a un objeto de la clase Post, y 
+    //cada campo de la tabla se convierte en una propiedad del objeto, y cada propiedad tiene un tipo de dato, por defecto todos los campos son string, 
+    //pero se puede especificar el tipo de dato que se quiere que tenga cada propiedad, en este caso se especifica que la propiedad published_at sea de tipo datetime
+    protected function casts(): array{ 
+        return [
+            'published_at' => 'datetime',
+            'is_active' => 'boolean',
+        ];
+    }
+
     //mutadores y accesores
     protected function title(): Attribute{
         return Attribute:: make(
@@ -23,7 +33,7 @@ class Post extends Model
                 return strtolower($value);
             },
             get: function($value){ //se llama cada vez que la propiedad title se lee este metodo se le llama accesor
-                return ucwords($value); //ucwords convierte la primer letra de cada palabra en mayuscula
+                return ucfirst($value); //ucfirst convierte la primer letra en mayuscula
             }
         );
     }
