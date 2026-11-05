@@ -8,5 +8,27 @@
 </head>
 <body>
     <h1>Aqui se agregara un formulario par aun nuevo post</h1>
+    <form action="/posts" method="POST">
+        @csrf
+        <label for="title">
+            Titulo:
+            <input type="text" name="title" required>
+        </label>
+        <br>
+        <br>
+        <label for="category">
+            Categoria:
+            <input type="text" name="category" required>
+        </label>
+        <br>
+        <br>
+        <label for="content">
+            Contenido:
+            <textarea name="content" required></textarea>
+        </label>
+        <br>
+        <br>
+        <input type="submit" value="Crear Post">
+    </form>
 </body>
 </html>

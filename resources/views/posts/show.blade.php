@@ -17,10 +17,27 @@
     ?>
     </h1> --}}
     {{-- //esta es la forma correcta de mostrar una variable en blade, ya que esta escapara los caracteres especiales y evitara ataques de inyeccion de codigo --}}
-    <h1>Aqui se mostrara el post {{ $post }} </h1> 
+    <a href="/posts">Volver a posts</a>
+    <h1>Titulo: {{ $post->title }} </h1> 
+    <p>
+        <b>Categoria: </b> {{ $post->category }} 
+        {{-- //esta es la forma correcta de mostrar una variable en blade, ya que esta escapara los caracteres especiales y evitara ataques de inyeccion de codigo --}}
+    </p>
+
+    <p>
+        {{ $post->content }} 
+        {{-- //esta es la forma correcta de mostrar una variable en blade, ya que esta escapara los caracteres especiales y evitara ataques de inyeccion de codigo --}}
+    </p>
+
+    <a href="/posts/{{ $post->id }}/edit">Editar posts</a>
+    <form action="/post/{{ $post->id }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit">Eliminar post</button>
+    </form>
 
     {{-- Funciones directivas para modificar la vista conforme a las necesidades, las directivas son con @ --}}
-    @if(true)
+    {{-- @if(true)
         <p>Es verdadero</p>
     @endif
 
@@ -30,7 +47,7 @@
         <p>Es verdadero</p>
     @else
         <p>Es falso</p>
-    @endif
+    @endif --}}
 
 </body>
 </html>
