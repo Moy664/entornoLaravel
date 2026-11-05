@@ -3,10 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+
+    //importante: se ocupa agregar use HasFactory para usar factories en laravel
+    use HasFactory;
+
     #esto no sigue convensiones ya que se puede simplificar mas
     // protected $table = 'posts';
 

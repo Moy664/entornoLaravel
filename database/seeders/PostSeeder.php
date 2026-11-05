@@ -23,20 +23,6 @@ class PostSeeder extends Seeder
         $posts->is_active = true;
         $posts->save();
         
-        $posts = new Post();
-        $posts->title = 'Post 2';
-        $posts->content = 'Content 2';
-        $posts->category = 'Category 2';
-        $posts->published_at = now();
-        $posts->is_active = true;
-        $posts->save();
-        
-        $posts = new Post();
-        $posts->title = 'Post 3';
-        $posts->content = 'Content 3';
-        $posts->category = 'Category 3';
-        $posts->published_at = now();
-        $posts->is_active = true;
-        $posts->save();
+        Post::factory(100)->create();
     }
 }
