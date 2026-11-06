@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function index(){
-        $posts = Post::orderBy('id','desc')->get();
+        $posts = Post::orderBy('id','desc')->paginate(10);
         
         return view("posts/index", [
             'posts' => $posts
@@ -52,7 +52,7 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->category = $request->category;
         $post->save();
-        return redirect('/posts/{{ $post->id }}');
+        return redirect("/posts/{$post->id}");
     }
 
     public function destroy(string $post){

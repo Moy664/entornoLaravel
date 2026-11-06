@@ -15,16 +15,17 @@ Route::post("/posts", [PostController::class,'store']);
 
 Route::get("/posts/{post}", [PostController::class,'show']); #si una funcion tiene parametros, estos se deben de pasar en la ruta, y se deben de usar dentro de la funcion
 
-#Varias rutas con parametros
-Route::get('/posts/{post}/{categoria?}', function ($post, $categoria = null) { # si hacemos una ruta con un parametro, este se debe de usar dentro de la funcion anonima
-    return "Aqui se mostrara el post {$post} de categoria {$categoria}";
-});
-
 Route::get('/posts/{post}/edit',[PostController::class,'edit']);
 
 Route::patch('/posts/{post}',[PostController::class,'update']);
 
 Route::delete('/posts/{post}',[PostController::class,'destroy']);
+
+#Varias rutas con parametros
+Route::get('/posts/{post}/{categoria?}', function ($post, $categoria = null) { # si hacemos una ruta con un parametro, este se debe de usar dentro de la funcion anonima
+    return "Aqui se mostrara el post {$post} de categoria {$categoria}";
+});
+
 
 #Varias rutas con parametros opcionales -> ?
 Route::get('/posts/{post}/{categoria}/{type?}', function ($post, $categoria, $type = null) { # al ser opcional, se le debe de asignar un valor por defecto

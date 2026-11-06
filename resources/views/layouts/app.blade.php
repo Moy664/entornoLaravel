@@ -14,8 +14,7 @@
 
     {{-- con yield se crean una plantillas y tiene la funcion de crear un espacio para que se pueda inyectar contenido en la plantilla, 
     es decir, se puede crear una plantilla y luego en otra vista se puede inyectar contenido en ese espacio creado con yield.     --}}
-    {{-- @yield('content')  --}}
-    {{ $slot }}
+    @yield('content')
 
     
     <footer></footer>
