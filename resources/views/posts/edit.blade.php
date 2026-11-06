@@ -9,6 +9,12 @@
         </label>
         <br>
         <br>
+        <label for="slug">
+            Slug:
+            <input type="text" name="slug" required value="{{$post->slug}}">
+        </label>
+        <br>
+        <br>
         <label for="category">
             Categoria:
             <input type="text" name="category" required value="{{ $post->category }}">

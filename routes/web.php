@@ -23,9 +23,7 @@ use App\Models\Post;
 
 # Route::apiResource crea las 5 rutas necesarias para un CRUD que solo se consume por API
 # Route::resource crea las 7 rutas necesarias para un CRUD que se consume por web, es decir te crea 2 rutas extras de vistas 'get' (edit y create)
-Route::apiResource('articulos', PostController::class)
-    ->parameters(['articulos'=>'post'])
-    ->names('posts'); #esta es la forma de llamar a un controlador desde una ruta, se le pasa el nombre del controlador y el metodo que se quiere ejecutar, en este caso el metodo __invoke
+Route::resource('posts', PostController::class); #esta es la forma de llamar a un controlador desde una ruta, se le pasa el nombre del controlador y el metodo que se quiere ejecutar, en este caso el metodo __invoke
 
 #Varias rutas con parametros
 Route::get('/posts/{post}/{categoria?}', function ($post, $categoria = null) { # si hacemos una ruta con un parametro, este se debe de usar dentro de la funcion anonima

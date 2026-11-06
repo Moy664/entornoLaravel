@@ -29,9 +29,9 @@
         {{-- //esta es la forma correcta de mostrar una variable en blade, ya que esta escapara los caracteres especiales y evitara ataques de inyeccion de codigo --}}
     </p>
 
-    <a href="{{ route('posts.edit', $post->id) }}">Editar posts</a>
+    <a href="{{ route('posts.edit', $post) }}">Editar posts</a>
 
-    <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+    <form action="{{ route('posts.destroy', $post) }}" method="POST">
         @csrf
         @method('DELETE')
         <button type="submit">Eliminar post</button>
