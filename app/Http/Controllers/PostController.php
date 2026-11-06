@@ -22,13 +22,24 @@ class PostController extends Controller
     public function store(Request $request){
 
         // return $request->all(); //devuelve todos los datos que se enviaron en el formulario
-        $post = new Post();
-        $post->title = $request->title;
-        $post->slug = $request->slug;
-        $post->content = $request->content;
-        $post->category = $request->category;
-        $post->save();
-        return redirect()->route('posts.index');
+        // $post = new Post();
+        // $post->title = $request->title;
+        // $post->slug = $request->slug;
+        // $post->content = $request->content;
+        // $post->category = $request->category;
+        // $post->save();
+        // return redirect()->route('posts.index');
+        
+        //otra forma de crear posts
+        // Post::create([
+        //     'title'=>$request->title,
+        //     'slug'=>$request->slug,
+        //     'content'=>$request->content,
+        //     'category'=>$request->category,
+        // ]);
+
+        //Utilizar esto es algo inseguro, ya que se pueden colar ciertos parametros que no leemos y ademas ocupamos crear un parametro fillable que lee cada uno en el modelo 
+        Post::create($request->all());
     }
 
     #si una funcion tiene parametros, estos se deben de pasar en la ruta, y se deben de usar dentro de la funcion
@@ -49,11 +60,12 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post){
         // $post = Post::find($post); //busca un registro en la tabla posts con el id correspondiente y lo devuelve como un objeto de la clase Post
-        $post->title = $request->title;
-        $post->slug = $request->slug;
-        $post->content = $request->content;
-        $post->category = $request->category;
-        $post->save();
+        // $post->title = $request->title;
+        // $post->slug = $request->slug;
+        // $post->content = $request->content;
+        // $post->category = $request->category;
+        // $post->save();
+        $post->update($request->all());
         return redirect()->route('posts.show', $post);
     }
 

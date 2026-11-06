@@ -12,6 +12,17 @@ class Post extends Model
     //importante: se ocupa agregar use HasFactory para usar factories en laravel
     use HasFactory;
 
+    protected $fillable =[
+        'title',
+        'slug',
+        'content',
+        'category',
+    ];
+
+    protected $guarded =[
+        'is_active',
+    ];
+
     #esto no sigue convensiones ya que se puede simplificar mas
     // protected $table = 'posts';
 
