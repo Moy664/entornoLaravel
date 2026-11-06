@@ -10,16 +10,23 @@ class PostController extends Controller
     public function index(){
         $posts = Post::orderBy('id','desc')->paginate(10);
         
-        return view("posts/index", [
+        return view("posts.index", [
             'posts' => $posts
         ]);
     }
 
     public function create(){
-        return view("posts/create");
+        return view("posts.create");
         
     }
     public function store(Request $request){
+
+        $request ->validate([
+            'title'=> 'required|min:5|max:255',
+            'slug'=> ['required','min:5','max:255', 'unique:posts'],
+            'category'=> 'required',
+            'content'=> 'required',
+        ]);
 
         // return $request->all(); //devuelve todos los datos que se enviaron en el formulario
         // $post = new Post();
@@ -59,6 +66,14 @@ class PostController extends Controller
     }
 
     public function update(Request $request, Post $post){
+
+        $request ->validate([
+            'title'=> 'required|min:5|max:255',
+            'slug'=> ['required','min:5','max:255', "unique:posts,slug,{$post->id}"],
+            'category'=> 'required',
+            'content'=> 'required',
+        ]);
+
         // $post = Post::find($post); //busca un registro en la tabla posts con el id correspondiente y lo devuelve como un objeto de la clase Post
         // $post->title = $request->title;
         // $post->slug = $request->slug;

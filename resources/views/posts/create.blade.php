@@ -8,30 +8,54 @@
 </head>
 <body>
     <h1>Aqui se agregara un formulario par aun nuevo post</h1>
+
+    {{-- @if ($errors->any())
+        <div>
+            <h2>Errors:</h2>
+            <ul>
+                @foreach ($errors->all() as $error )
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif --}}
+
     <form action="{{ route('posts.store') }}" method="POST">
         @csrf
         <label for="title">
             Titulo:
-            <input type="text" name="title" required>
+            <input type="text" name="title" value="{{old('title')}}">
         </label>
+        @error('title')
+            <p>{{ $message }}</p>
+        @enderror
         <br>
         <br>
         <label for="slug">
             Slug:
-            <input type="text" name="slug" required>
+            <input type="text" name="slug" value="{{old('slug')}}" >
         </label>
+        @error('slug')
+            <p>{{ $message }}</p>
+        @enderror
         <br>
         <br>
         <label for="category">
             Categoria:
-            <input type="text" name="category" required>
+            <input type="text" name="category" value="{{old('category')}}" >
         </label>
+        @error('category')
+            <p>{{ $message }}</p>
+        @enderror
         <br>
         <br>
         <label for="content">
             Contenido:
-            <textarea name="content" required></textarea>
+            <textarea name="content" >{{old('content')}}</textarea>
         </label>
+        @error('content')
+            <p>{{ $message }}</p>
+        @enderror
         <br>
         <br>
         <input type="submit" value="Crear Post">
