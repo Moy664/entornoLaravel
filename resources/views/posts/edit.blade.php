@@ -1,6 +1,6 @@
 <x-app-layout>
     <h1>Aqui se agregara un formulario par aun nuevo post</h1>
-    <form action="/posts/{{ $post->id }}" method="POST">
+    <form action="{{route('posts.update', $post)}}" method="POST">
         @csrf
         @method('PATCH')
         <label for="title">

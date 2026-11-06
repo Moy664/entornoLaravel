@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Aqui se agregara un formulario par aun nuevo post</h1>
-    <form action="/posts" method="POST">
+    <form action="{{ route('posts.store') }}" method="POST">
         @csrf
         <label for="title">
             Titulo:

@@ -5,21 +5,21 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Models\Post;
 
-Route::get('/', HomeController::class); #esta es la forma de llamar a un controlador desde una ruta, se le pasa el nombre del controlador y el metodo que se quiere ejecutar, en este caso el metodo __invoke      
+Route::get('/', HomeController::class) -> name('posts.home'); #esta es la forma de llamar a un controlador desde una ruta, se le pasa el nombre del controlador y el metodo que se quiere ejecutar, en este caso el metodo __invoke      
 
 #Es importante que las rutas se declaren de manera ordenada, ya que si una ruta es mas generica que otra, esta se ejecutara primero y no se ejecutara la ruta mas especifica
-Route::get('/posts', [PostController::class, 'index']);//esta es la forma de llamar a un controlador desde una ruta, se le pasa el nombre del controlador y el metodo que se quiere ejecutar  
+Route::get('/posts', [PostController::class, 'index']) -> name('posts.index');//esta es la forma de llamar a un controlador desde una ruta, se le pasa el nombre del controlador y el metodo que se quiere ejecutar  
 
-Route::get("/posts/create", [PostController::class,'create']);
-Route::post("/posts", [PostController::class,'store']);
+Route::get("/posts/create", [PostController::class,'create']) -> name('posts.create');
+Route::post("/posts", [PostController::class,'store']) -> name('posts.store');
 
-Route::get("/posts/{post}", [PostController::class,'show']); #si una funcion tiene parametros, estos se deben de pasar en la ruta, y se deben de usar dentro de la funcion
+Route::get("/posts/{post}", [PostController::class,'show']) -> name('posts.show'); #si una funcion tiene parametros, estos se deben de pasar en la ruta, y se deben de usar dentro de la funcion
 
-Route::get('/posts/{post}/edit',[PostController::class,'edit']);
+Route::get('/posts/{post}/edit',[PostController::class,'edit']) -> name('posts.edit');
 
-Route::patch('/posts/{post}',[PostController::class,'update']);
+Route::patch('/posts/{post}',[PostController::class,'update']) -> name('posts.update');
 
-Route::delete('/posts/{post}',[PostController::class,'destroy']);
+Route::delete('/posts/{post}',[PostController::class,'destroy']) -> name('posts.destroy');
 
 #Varias rutas con parametros
 Route::get('/posts/{post}/{categoria?}', function ($post, $categoria = null) { # si hacemos una ruta con un parametro, este se debe de usar dentro de la funcion anonima
