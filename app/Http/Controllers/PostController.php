@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -19,14 +20,16 @@ class PostController extends Controller
         return view("posts.create");
         
     }
-    public function store(Request $request){
-
-        $request ->validate([
-            'title'=> 'required|min:5|max:255',
-            'slug'=> ['required','min:5','max:255', 'unique:posts'],
-            'category'=> 'required',
-            'content'=> 'required',
-        ]);
+    public function store(StorePostRequest $request){
+        // Validar sin archivo request
+        // $request ->validate([
+        //     'title'=> 'required|min:5|max:255',
+        //     'slug'=> ['required','min:5','max:255', 'unique:posts'],
+        //     'category'=> 'required',
+        //     'content'=> 'required',
+        // ]);
+        // Validar con archivo request
+        
 
         // return $request->all(); //devuelve todos los datos que se enviaron en el formulario
         // $post = new Post();
