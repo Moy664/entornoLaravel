@@ -20,6 +20,8 @@
         </div>
     @endif --}}
 
+    {{-- {{ __('All rights reserved.') }} //Forma de traducir o llamar mensajes por medio del json en lang--}}
+
     <form action="{{ route('posts.store') }}" method="POST">
         @csrf
         <label for="title">

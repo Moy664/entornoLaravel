@@ -40,9 +40,9 @@ class StorePostRequest extends FormRequest
     //     ];
     // }
 
-    public function attributes(): array{
-        return [
-            'title' => 'name',
-        ];
-    }
+    // public function attributes(): array{
+    //     return [
+    //         'title' => 'name',
+    //     ];
+    // }
 }
