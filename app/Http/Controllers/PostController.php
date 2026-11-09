@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
+use App\Mail\PostCreateMail;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -49,7 +51,11 @@ class PostController extends Controller
         // ]);
 
         //Utilizar esto es algo inseguro, ya que se pueden colar ciertos parametros que no leemos y ademas ocupamos crear un parametro fillable que lee cada uno en el modelo 
-        Post::create($request->all());
+        $post = Post::create($request->all());
+
+        Mail::to('prueba@prueba.com')->send(new PostCreateMail($post));
+
+        return redirect()->route('posts.index');
     }
 
     #si una funcion tiene parametros, estos se deben de pasar en la ruta, y se deben de usar dentro de la funcion
